@@ -1,8 +1,8 @@
-import StatsService from "../services/statsService.js";
+import StatService from "../services/statService.js";
 
 export const getStats = async (req, res) => {
   try {
-    const stats = await StatsService.getDashboardStats();
+    const stats = await StatService.getDashboardStats();
     res.status(200).json(stats);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -12,7 +12,7 @@ export const getStats = async (req, res) => {
 export const updateStats = async (req, res) => {
   try {
     
-    const updated = await StatsService.updateManualStats(req.body);
+    const updated = await StatService.updateManualStats(req.body);
     res.status(200).json(updated);
   } catch (error) {
     res.status(400).json({ message: error.message });

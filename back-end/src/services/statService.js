@@ -1,4 +1,4 @@
-import StatsRepository from "../repositories/statsRepository.js";
+import StatsRepository from "../repositories/statRepository.js";
 
 class StatsService {
   async getDashboardStats() {
