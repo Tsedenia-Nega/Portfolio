@@ -1,28 +1,26 @@
-import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import User from "../models/userModel.js";
-import dotenv from "dotenv";
 
-dotenv.config();
-const seedAdmin = async ()=>{
-    try{
+const seedAdmin = async () => {
+  try {
 
-await mongoose.connect(process.env.MONGO_URI);
-await User.deleteMany();
+    const adminExists = await User.findOne({ email: "tsedenia301@gmail.com" });
 
-const hashedPassword = await bcrypt.hash("Goodfuture94!", 10);
-await User.create({
-  email: "tsedenia301@gmail.com",
-  password: hashedPassword,
-});
+    if (!adminExists) {
+      await User.deleteMany({}); 
+      const hashedPassword = await bcrypt.hash("Goodfuture94!", 10);
 
-console.log("Admin user seeded successfully!");
-process.exit();
-
-    }catch(error){
-console.error("Error seeding user:", error);
-process.exit(1);
+      await User.create({
+        email: "tsedenia301@gmail.com",
+        password: hashedPassword,
+      });
+      console.log(" Admin seeded successfully!");
+    } else {
+      console.log(" Admin already exists, skipping seed.");
     }
-}
-seedAdmin();
+  } catch (error) {
+    console.error(" Seeding error:", error.message);
+  }
+};
+
 export default seedAdmin;

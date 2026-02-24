@@ -1,167 +1,157 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Download, Database, Code2, Cpu, Terminal } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Download,
+  Database,
+  Code2,
+  Cpu,
+  Globe,
+  Layers,
+  Box,
+  Terminal,
+  Cloud,
+} from "lucide-react";
 
 const Home = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const roles = [
-    "Full-stack Developer",
-    "Backend Architect",
-    "Frontend Engineer",
-    "Creative Developer",
+  // Precise node positions to match the geometric "web" in the image
+  const nodes = [
+    { icon: Terminal, top: "25%", left: "42%", label: "Backend" },
+    { icon: Cloud, top: "15%", left: "75%", label: "Cloud" },
+    { icon: Box, top: "35%", left: "95%", label: "DevOps" },
+    { icon: Database, top: "65%", left: "95%", label: "Database" },
+    { icon: Code2, top: "85%", left: "75%", label: "Frontend" },
+    { icon: Cpu, top: "75%", left: "45%", label: "Systems" },
+    { icon: Globe, top: "50%", left: "38%", label: "Global" },
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#050505] pt-5 text-white selection:bg-cyan-500/30 font-sans overflow-hidden">
+    <div className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30 font-sans overflow-hidden">
       {/* --- BACKGROUND LAYER --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* The Circuitry Background Image */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 2 }}
-          className="absolute inset-0 bg-no-repeat bg-center bg-cover"
+        <div
+          className="absolute inset-0 bg-no-repeat bg-center bg-cover opacity-30"
           style={{
-            backgroundImage: `url('/portfoli.jpg')`,
-            filter: "brightness(0.6) contrast(1.1)",
+            backgroundImage: `url('/port.jpg')`, // Using the hexagonal background
+            filter: "hue-rotate(10deg) brightness(0.7)",
           }}
         />
-
-        
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90" />
-
-        
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/50 to-transparent" />
       </div>
 
-      {/* --- MAIN CONTENT --- */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 h-screen flex flex-col lg:flex-row items-center justify-between gap-12">
+      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 h-screen flex flex-col lg:flex-row items-center justify-between">
         {/* LEFT: TEXT CONTENT */}
-        <div className="flex-1 space-y-8 pt-32 lg:pt-0">
+        <div className="flex-1 space-y-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-3 text-cyan-500 font-mono text-[10px] tracking-[0.4em] uppercase"
+            className="flex items-center gap-3"
           >
-            <span className="w-8 h-[1px] bg-cyan-500/50" />
-            System.Architect.Verified
+            <div className="h-[1px] w-10 bg-cyan-500" />
+            <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-cyan-400">
+              Engineering Portfolio
+            </span>
           </motion.div>
 
-          <div className="space-y-5">
-            <h1 className="text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.85]">
-              TSEDENIA <span />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-500 font-light">
-                NEGA
+          <div className="space-y-1">
+            <h2 className="text-4xl lg:text-5xl font-light tracking-widest text-slate-300 uppercase">
+              Tsedenia <span className="font-bold text-white">Nega</span>
+            </h2>
+            <h1 className="text-5xl lg:text-7xl font-black tracking-tighter leading-none">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-500">
+                CREATIVE <br /> DEVELOPER
               </span>
             </h1>
-
-            <div className="h-10 flex items-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={roles[roleIndex]}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="flex items-center font-bold gap-2 text-xl font-mono text-cyan-400 tracking-wider"
-                >
-                  <Terminal size={18} />
-                  <span>{roles[roleIndex].toUpperCase()}</span>
-                </motion.div>
-              </AnimatePresence>
-            </div>
           </div>
 
-          <p className="text-slate-400 text-base max-w-md leading-relaxed font-light">
-            Engineering{" "}
-            <span className="text-white">robust backend infrastructures</span>{" "}
-            and high-performance{" "}
-            <span className="text-white">frontend systems</span>. Turning
-            complex logic into seamless digital experiences.
+          <p className="text-slate-400 text-sm max-w-sm leading-relaxed border-l border-white/10 pl-4">
+            I build advanced web applications with a focus on{" "}
+            <span className="text-white">elegant design</span> and{" "}
+            <span className="text-white">robust system architecture</span>.
           </p>
 
-          <div className="flex items-center gap-8 pt-4">
-            <button className="px-10 py-3 bg-white border border-white rounded-sm transition-all duration-300 hover:bg-black group">
-              <span className="text-black text-xs font-bold uppercase tracking-widest group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:via-white group-hover:to-purple-500">
-                View Work
+          <div className="pt-4">
+            <button className="group relative px-6 py-2 bg-transparent border border-cyan-500/50 rounded-sm transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+              <span className="text-cyan-400 text-[10px] font-bold uppercase tracking-[0.3em] flex items-center gap-2">
+                <Download size={14} /> Download My CV
               </span>
-            </button>
-            <button className="group flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500 hover:text-white transition-all">
-              <Download
-                size={16}
-                className="text-cyan-500 group-hover:animate-bounce"
-              />
-              Download_CV
             </button>
           </div>
         </div>
 
-        {/* RIGHT: THE CIRCULAR PORTAL */}
-        <div className="flex-1 relative flex justify-center items-center">
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
-          >
-          
-            <div className="relative w-64 h-64 lg:w-[420px] lg:h-[420px] rounded-full p-[2px] bg-gradient-to-tr from-cyan-500 via-transparent to-purple-500">
-              <div className="w-full h-full rounded-full overflow-hidden border-[8px] border-[#050505] relative shadow-2xl">
+        {/* RIGHT: THE HEXAGONAL PORTAL */}
+        <div className="flex-1 relative flex justify-center items-center h-[600px]">
+          <div className="relative w-full h-full max-w-[500px] max-h-[500px]">
+            {/* 1. The Hexagon Frame (CSS Clip Path) */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-64 lg:w-72 lg:h-80 z-10 p-[2px] bg-gradient-to-b from-cyan-500 via-purple-500 to-transparent shadow-[0_0_50px_rgba(6,182,212,0.2)]"
+              style={{
+                clipPath:
+                  "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+              }}
+            >
+              <div
+                className="w-full h-full bg-[#020617] flex items-center justify-center"
+                style={{
+                  clipPath:
+                    "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                }}
+              >
                 <img
                   src="/me.jpg"
                   alt="Tsedenia Nega"
-                  className="w-full h-full object-cover  hover:grayscale-0 transition-all duration-1000 brightness-90"
+                  className="w-full h-full object-cover grayscale brightness-110 contrast-125"
                 />
               </div>
-
-              {/* Orbiting Specialty Tags */}
-              <div className="absolute inset-[-30px] pointer-events-none">
-                {/* Top Left Badge */}
-                <div className="absolute top-10 left-[-20px] p-4 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center gap-3 shadow-xl">
-                  <Database size={18} className="text-purple-400" />
-                  <div className="text-[9px] font-mono">
-                    <p className="text-slate-500">DB.STRUCTURE</p>
-                    <p className="text-white">POSTGRES / MONGO</p>
-                  </div>
-                </div>
-
-                {/* Bottom Right Badge */}
-                <div className="absolute bottom-10 right-[-20px] p-4 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center gap-3 shadow-xl">
-                  <Code2 size={18} className="text-cyan-400" />
-                  <div className="text-[9px] font-mono">
-                    <p className="text-slate-500">FRONTEND</p>
-                    <p className="text-white">REACT / NEXT.JS</p>
-                  </div>
-                </div>
-
-                {/* Center Right Badge */}
-                <div className="absolute top-1/2 -right-16 -translate-y-1/2 p-4 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center gap-3 shadow-xl">
-                  <Cpu size={18} className="text-emerald-400" />
-                  <div className="text-[9px] font-mono">
-                    <p className="text-slate-500">BACKEND</p>
-                    <p className="text-white">NODE.JS / EXPRESS</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </motion.div>
+
+            {/* 2. Background Hexagon Glows */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-cyan-500/20 rotate-12"
+              style={{
+                clipPath:
+                  "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+              }}
+            />
+
+            {/* 3. Orbiting Geometric Nodes */}
+            {nodes.map((node, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 z-20"
+                style={{ top: node.top, left: node.left }}
+              >
+                <div className="group relative flex items-center justify-center w-full h-full bg-black/80 border border-white/20 rounded-full hover:border-cyan-400 transition-all cursor-crosshair">
+                  <node.icon
+                    size={16}
+                    className="text-white/70 group-hover:text-cyan-400"
+                  />
+
+                  {/* Glowing Connection Point */}
+                  <div className="absolute -inset-1 bg-cyan-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  {/* Label */}
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-widest uppercase">
+                    {node.label}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* 4. Tech Particle Effects */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_70%)] animate-pulse" />
+          </div>
         </div>
       </section>
 
-      {/* FOOTER BAR */}
-      <footer className="fixed bottom-0 w-full p-6 flex justify-between text-[9px] font-mono text-slate-700 tracking-[0.4em] z-50">
-        <div className="flex gap-10">
-          <span>REGION: ADDIS_ABABA // ET</span>
-          <span className="hidden md:inline">NODE_V: 20.x.LTS</span>
-        </div>
-        <div className="flex items-center gap-3 text-cyan-500/60">
-          <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse" />
-          <span>FULLSTACK_ARCH_ACTIVE</span>
+      {/* FOOTER */}
+      <footer className="fixed bottom-0 w-full p-6 flex justify-between items-center text-[9px] font-mono text-slate-600 tracking-[0.5em] z-50">
+        <span>ADDIS_ABABA // 2026</span>
+        <div className="flex items-center gap-2 text-cyan-500/50">
+          <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-ping" />
+          CORE_SYSTEM_ACTIVE
         </div>
       </footer>
     </div>
