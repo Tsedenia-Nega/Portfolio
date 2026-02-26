@@ -14,12 +14,7 @@ import {
 const Home = () => {
   const [index, setIndex] = useState(0);
 
-  const roles = [
-    "Fullstack Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "Creative Developer",
-  ];
+  const roles = ["Fullstack Developer", "AI Enthusiast", "Creative Developer"];
 
   // Cycle roles every 3 seconds
   useEffect(() => {
@@ -87,7 +82,7 @@ const Home = () => {
                 transition={{ duration: 0.4 }}
                 className="text-3xl lg:text-4xl font-light tracking-tight"
               >
-                <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent font-light">
+                <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent font-bold">
                   {roles[index]}
                 </span>
               </motion.h1>
