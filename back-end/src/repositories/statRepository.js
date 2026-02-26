@@ -7,7 +7,7 @@ class StatsRepository {
   }
 
   async updateStats(data) {
-    return await Stats.findOneAndUpdate({}, data, { new: true, upsert: true });
+    return await Stats.findOneAndUpdate({}, data, { returnDocument: "after" });
   }
 }
 

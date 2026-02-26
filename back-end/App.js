@@ -26,5 +26,5 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/login", authRoutes);
 
 app.use("/api/stats", statRoutes);
-app.use("/api/contact", contactRoutes);
+app.use("/api/contacts", contactRoutes);
 app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)});

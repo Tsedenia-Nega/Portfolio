@@ -7,10 +7,15 @@ import {
   Cpu,
   Globe,
   Box,
+  Zap,
   Terminal,
   Cloud,
 } from "lucide-react";
-
+import Footer from "../components/Footer";
+import StatsSection from "../components/StatSection";
+import About from "./About";
+import Contact from "./Contact";
+import Portfolio from "./Portfolio";
 const Home = () => {
   const [index, setIndex] = useState(0);
 
@@ -24,25 +29,33 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const nodes = [
-    { icon: Terminal, top: "28%", left: "45%", label: "Backend" },
-    { icon: Cloud, top: "22%", left: "68%", label: "Cloud" },
-    { icon: Box, top: "45%", left: "82%", label: "DevOps" },
-    { icon: Database, top: "72%", left: "78%", label: "Database" },
-    { icon: Code2, top: "85%", left: "55%", label: "Frontend" },
-    { icon: Cpu, top: "72%", left: "32%", label: "Systems" },
-    { icon: Globe, top: "45%", left: "25%", label: "Global" },
-  ];
+ const nodes = [
+   { icon: Terminal, top: "15%", left: "50%", label: "Backend" }, // Top
+   { icon: Database, top: "50%", left: "85%", label: "Database" }, // Right
+   { icon: Code2, top: "85%", left: "50%", label: "Frontend" }, // Bottom
+   { icon: Zap, top: "50%", left: "15%", label: "Fullstack" }, // Left
+ ];
 
+  const handleDownload = () => {
+    
+    const cvUrl = "/Tsedenia_Nega_CV.pdf"; 
+    
+    const link = document.createElement("a");
+    link.href = cvUrl;
+    link.download = "Tsedenia_Nega_CV.pdf"; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div className="min-h-screen bg-[#020617] text-white font-sans overflow-hidden selection:bg-cyan-500/30">
       {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
-          className="absolute inset-0 bg-no-repeat bg-center bg-cover opacity-20"
+          className="absolute inset-0 bg-no-repeat bg-center bg-cover opacity-70"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070')",
+              "url('https://plus.unsplash.com/premium_photo-1681399975135-252eab5fd2db?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
             filter: "hue-rotate(10deg) brightness(0.7)",
           }}
         />
@@ -51,7 +64,7 @@ const Home = () => {
 
       <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 h-screen flex flex-col lg:flex-row items-center justify-center gap-16">
         {/* LEFT CONTENT */}
-        <div className="flex-1 pl-35 space-y-4">
+        <div className="flex-1 pl-35 space-y-2">
           {/* Small Label */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -64,14 +77,12 @@ const Home = () => {
             </span>
           </motion.div>
 
-          {/* Name */}
           <div>
             <h2 className="text-4xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
               Tsedenia <span className="text-cyan-300">Nega</span>
             </h2>
           </div>
 
-          {/* Animated Role */}
           <div className="h-20 flex items-center">
             <AnimatePresence mode="wait">
               <motion.h1
@@ -102,11 +113,16 @@ const Home = () => {
             .
           </p>
 
-          {/* Button */}
           <div className="pt-4">
-            <button className="group px-8 py-3 border border-white/20 hover:border-cyan-500/60 hover:bg-cyan-500/5 transition-all duration-300">
-              <span className="text-sm font-medium tracking-wide flex items-center gap-2">
-                <Download size={16} className="text-cyan-400" />
+            <button
+              onClick={handleDownload}
+              className="group px-8 py-3 border border-white/20 hover:border-cyan-500/60 hover:bg-cyan-500/5 transition-all duration-300 relative overflow-hidden"
+            >
+              <span className="text-sm font-medium tracking-wide flex items-center gap-2 text-white group-hover:text-cyan-400 transition-colors">
+                <Download
+                  size={16}
+                  className="text-cyan-400 group-hover:scale-110 transition-transform"
+                />
                 Download CV
               </span>
             </button>
@@ -150,15 +166,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <StatsSection />
 
-      {/* FOOTER */}
-      <footer className="fixed bottom-0 w-full px-10 py-6 flex justify-between items-center text-xs text-slate-500 tracking-wide z-50">
-        <span>Addis Ababa // 2026</span>
-        <div className="flex items-center gap-2 text-cyan-500/40">
-          <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
-          System Active
-        </div>
-      </footer>
+      <About />
+      <Portfolio />
+      <Contact />
     </div>
   );
 };

@@ -11,8 +11,9 @@ class ProjectRepository {
         return await newProject.save();
     }
     async updateProject(id, projectData) {
-        return await Project.findByIdAndUpdate(id, projectData, { new: true });
+        return await Project.findByIdAndUpdate(id, projectData,  { returnDocument: 'after' } );
     }
+ 
     async deleteProject(id) {
         return await Project.findByIdAndDelete(id);
     }

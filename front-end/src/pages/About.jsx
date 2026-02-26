@@ -140,9 +140,9 @@ const About = () => {
           </motion.div>
         </div>
 
-        <div className="mb-20 font-sans">
+        <div className="mb-14 font-sans">
           <h2 className="text-4xl font-bold text-center mb-24 uppercase tracking-tighter">
-            Professional <span className="text-[#2DD4BF] italic">Journey</span>
+            Professional <span className="text-cyan-500 ">Journey</span>
           </h2>
           {/* --- EDUCATION & CERTIFICATES --- */}
           <div className="grid md:grid-cols-2 gap-6 mb-16">
