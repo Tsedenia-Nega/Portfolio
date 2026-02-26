@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(errorHandler);
+app.use("/uploads", express.static("uploads"));
 app.get("/", (req, res) => {
   res.send("This is Tsedenia!");
 });

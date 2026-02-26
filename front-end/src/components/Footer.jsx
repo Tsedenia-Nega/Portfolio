@@ -67,7 +67,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-cyan-500 transition-colors text-md font-medium"
+                    className="text-cyan-700 transition-colors text-md font-medium"
                     onClick={scrollToTop}
                   >
                     {link.name}

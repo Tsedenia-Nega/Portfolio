@@ -60,7 +60,7 @@ const Portfolio = () => {
           transition={{ duration: 0.8 }}
           className="max-w-2xl mx-auto mb-20 text-center"
         >
-          <p className="text-slate-400 text-lg leading-relaxed italic">
+          <p className="text-slate-400 text-md leading-relaxed ">
             "Bridging the gap between{" "}
             <span className="text-white font-medium">
               robust server-side logic
@@ -73,7 +73,6 @@ const Portfolio = () => {
             <span className="text-cyan-400">scalable backend architecture</span>{" "}
             meets modern web performance."
           </p>
-        
         </motion.div>
         {/* Z-PATTERN STACK */}
         {loading ? (
@@ -106,15 +105,6 @@ const Portfolio = () => {
                           alt={project.title}
                           className="w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100"
                         />
-                        {/* TECH OVERLAY */}
-                        {/* <div className="absolute top-4 left-4 flex gap-2">
-                          <div className="px-2 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded text-[8px] font-mono text-cyan-400">
-                            NODE_JS
-                          </div>
-                          <div className="px-2 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded text-[8px] font-mono text-purple-400">
-                            STABLE_V2
-                          </div>
-                        </div> */}
                       </div>
                     </div>
 
@@ -134,19 +124,17 @@ const Portfolio = () => {
                       </div>
 
                       <p
-                        className={`text-slate-400 text-base leading-relaxed font-light ${idx % 2 !== 0 ? "ml-auto" : "mr-auto"} max-w-lg`}
+                        className={`text-slate-400  text-left leading-relaxed font-light  max-w-lg`}
                       >
                         {project.description}
                       </p>
 
                       {/* DYNAMIC TECH TAGS */}
-                      <div
-                        className={`flex flex-wrap gap-2 ${idx % 2 !== 0 ? "justify-start" : "justify-start"}`}
-                      >
+                      <div className="flex flex-wrap gap-3 justify-center items-center w-full mt-4">
                         {project.techStack?.map((tech, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-mono text-slate-300"
+                            className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs md:text-sm font-mono text-slate-300 hover:border-cyan-500/50 transition-colors"
                           >
                             {tech}
                           </span>
