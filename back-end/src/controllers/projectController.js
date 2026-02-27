@@ -2,8 +2,13 @@ import ProjectService from "../services/projectService.js";
 
 export const getAllProjects = async (req, res) => {
   try {
-    const projects = await ProjectService.getAllProjects();
-    res.status(200).json(projects);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 3;
+
+    // Call the repository with pagination params
+    const data = await ProjectService.getAllProjects(page, limit);
+
+    res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
