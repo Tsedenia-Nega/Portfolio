@@ -59,7 +59,7 @@ const About = () => {
       <section className="max-w-6xl mx-auto px-6">
         {/* --- HEADER (Corrected Font & Condensed Text) --- */}
         <div className="text-center mb-20">
-          <motion.h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
+          <motion.h1 className="text-5xl md:text-5xl font-bold tracking-tight text-white mb-6">
             About <span className="text-cyan-500 font-black">Me</span>
           </motion.h1>
           <div className="max-w-3xl mx-auto space-y-4">
