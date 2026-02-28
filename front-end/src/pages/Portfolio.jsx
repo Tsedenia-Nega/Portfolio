@@ -1,27 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Code2, ShieldCheck, Zap } from "lucide-react";
-import axios from "axios";
-import API from "../services/api";
+import { projectData } from "../data/project";
 const Portfolio = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await API.get("/projects");
-        if (Array.isArray(response.data)) {
-          setProjects(response.data);
-        }
-      } catch (error) {
-        console.error(" API Connection Failed");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProjects();
-  }, []);
+ useEffect(() => {
+   
+   const timer = setTimeout(() => {
+     setProjects(projectData);
+     setLoading(false);
+   }, 100);
+
+   return () => clearTimeout(timer);
+ }, []);
 
   return (
     <div className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30 font-sans pt-20 pb-32 overflow-x-hidden">

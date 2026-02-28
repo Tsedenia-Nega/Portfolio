@@ -61,17 +61,55 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#020617] via-[#020617]/80 to-transparent" />
       </div>
 
-      {/* MAIN SECTION - Changed h-screen to min-h-screen for mobile scrolling */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 min-h-screen flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-16 pt-24 lg:pt-0">
-        {/* LEFT CONTENT - Adjusted padding and text alignment for mobile */}
-        <div className="flex-1 lg:pl-35 space-y-2 text-center lg:text-left order-2 lg:order-1">
+      {/* MAIN SECTION - Reduced pt-24 to pt-32 for better header clearance, gap-6 to gap-0 for mobile */}
+      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 min-h-screen flex flex-col lg:flex-row items-center justify-start lg:justify-center gap-0 lg:gap-16 pt-12 lg:pt-0">
+        {/* {/* RIGHT CIRCULAR PORTAL  */}
+        <div className="flex-1 relative flex justify-center items-center h-56  mb-0 lg:mb-0 lg:h-[500px] order-1 lg:order-2">
+          <div className="relative w-48 h-48 lg:w-full lg:h-full lg:max-w-[400px] ">
+            {/* Profile Circle */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 lg:w-52 lg:h-52 z-10 p-[2px] bg-white/10 rounded-full shadow-2xl">
+              <div className="w-full h-full bg-[#020617] rounded-full overflow-hidden flex items-center justify-center border-[4px] border-[#020617]">
+                <img
+                  src="/my.jpg"
+                  alt="Tsedenia Nega"
+                  className="w-full h-full  opacity-50
+                  object-cover"
+                />
+              </div>
+            </div>
+
+            {/* NODES - Added hidden lg:block to keep mobile clean */}
+            {nodes.map((node, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                className="hidden lg:block absolute w-8 h-8 lg:w-10 lg:h-10 -translate-x-1/2 -translate-y-1/2 z-20"
+                style={{ top: node.top, left: node.left }}
+              >
+                <div className="group relative flex items-center justify-center w-full h-full bg-black border border-white/10 rounded-full hover:border-cyan-400 transition-all cursor-pointer">
+                  <node.icon
+                    size={14}
+                    className="text-white/40 group-hover:text-cyan-400 transition-colors"
+                  />
+                  <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono text-cyan-400 opacity-0 lg:group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-wide">
+                    {node.label}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* LEFT CONTENT - order-2 so it follows the image on mobile */}
+        <div className="flex-1 lg:pl-35 space-y-2 text-center lg:text-left order-2 lg:order-1 pb-20  lg:pb-0  mt-0 lg:mt-0">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center justify-center lg:justify-start gap-4"
           >
-            <div className="h-px w-12 bg-cyan-500/50" />
-            
+            <div className="hidden lg:block h-px w-12 bg-cyan-500/50" />
           </motion.div>
 
           <div>
@@ -97,7 +135,7 @@ const Home = () => {
             </AnimatePresence>
           </div>
 
-          <p className="text-slate-300 text-sm lg:text-base max-w-md mx-auto lg:mx-0 leading-relaxed font-light">
+          <p className="text-slate-300 text-sm lg:text-base max-w-md mx-auto lg:mx-0 leading-relaxed font-light px-4 lg:px-0">
             I build modern web applications focused on{" "}
             <span className="text-white font-medium">
               elegant user experiences
@@ -124,49 +162,13 @@ const Home = () => {
             </button>
           </div>
         </div>
-
-        {/* RIGHT CIRCULAR PORTAL - Scaled for mobile */}
-        <div className="flex-1 relative flex justify-center items-center h-[300px] lg:h-[500px] order-1 lg:order-2">
-          <div className="relative w-full h-full max-w-[300px] max-h-[300px] lg:max-w-[400px] lg:max-h-[400px]">
-            {/* Profile Circle */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 lg:w-52 lg:h-52 z-10 p-[2px] bg-white/10 rounded-full shadow-2xl">
-              <div className="w-full h-full bg-[#020617] rounded-full overflow-hidden flex items-center justify-center border-[4px] border-[#020617]">
-                <img
-                  src="/my.jpg"
-                  alt="Tsedenia Nega"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            {nodes.map((node, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                className="absolute w-8 h-8 lg:w-10 lg:h-10 -translate-x-1/2 -translate-y-1/2 z-20"
-                style={{ top: node.top, left: node.left }}
-              >
-                <div className="group relative flex items-center justify-center w-full h-full bg-black border border-white/10 rounded-full hover:border-cyan-400 transition-all cursor-pointer">
-                  <node.icon
-                    size={14}
-                    className="text-white/40 group-hover:text-cyan-400 transition-colors"
-                  />
-                  <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono text-cyan-400 opacity-0 lg:group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-wide">
-                    {node.label}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
 
       <StatsSection />
       <About />
       <Portfolio />
       <Contact />
+      <Footer />
     </div>
   );
 };

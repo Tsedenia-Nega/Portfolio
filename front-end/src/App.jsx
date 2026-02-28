@@ -28,10 +28,12 @@ const AppContent = () => {
 
   return (
     <>
+
+    
    
       <ScrollToTop />
 
-      {/* 2. Only show Navbar if NOT on login or admin pages */}
+     
       {!isAuthOrAdmin && <Navbar />}
 
       <Routes>

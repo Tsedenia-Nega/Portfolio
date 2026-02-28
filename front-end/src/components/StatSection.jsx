@@ -1,50 +1,24 @@
-import React, { useEffect, useState } from "react";
-import API from "../services/api";
+import React from "react";
 import { motion } from "framer-motion";
 
 const StatsSection = () => {
-  // 1. Added yearsOfExperience to the state object
-  const [stats, setStats] = useState({
-    totalProjects: 0,
-    totalClients: 0,
-    yearsOfExperience: 0,
-  });
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const { data } = await API.get("/stats");
-        // 2. Ensure your Backend response includes 'yearsOfExperience'
-        setStats(data);
-      } catch (error) {
-        console.error("Failed to fetch stats", error);
-        // Fallback to show something if the API fails
-        setStats({ totalProjects: 15, totalClients: 8, yearsOfExperience: 2 });
-      }
-    };
-    fetchStats();
-  }, []);
-
-  // 3. Mapping data dynamically from the 'stats' state
+  // Static data based on your current milestones
   const statItems = [
     {
       label: "Years Experience",
-      value:
-        stats.yearsOfExperience < 10
-          ? `${stats.yearsOfExperience}`
-          : stats.yearsOfExperience,
+      value: "2",
       suffix: "+",
       isSpecial: false,
     },
     {
       label: "Projects Completed",
-      value: stats.totalProjects,
+      value: "7",
       suffix: "+",
       isSpecial: false,
     },
     {
       label: "Happy Clients",
-      value: stats.totalClients,
+      value: "3",
       suffix: "+",
       isSpecial: false,
     },
