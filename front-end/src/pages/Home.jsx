@@ -168,7 +168,7 @@ const Home = () => {
       <About />
       <Portfolio />
       <Contact />
-      <Footer />
+    
     </div>
   );
 };

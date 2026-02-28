@@ -103,7 +103,7 @@ const Portfolio = () => {
 
                     {/* SIDE B: SPECIFICATIONS */}
                     <div
-                      className={`w-full lg:w-1/2 space-y-6 ${idx % 2 !== 0 ? "text-right items-end" : "text-left items-start"}`}
+                      className={`w-full lg:w-1/2 space-y-6 ${idx % 2 !== 0 ? "text-right items-start" : "text-left items-start"}`}
                     >
                       <div
                         className={`flex flex-col ${idx % 2 !== 0 ? "items-start" : "items-start"}`}
