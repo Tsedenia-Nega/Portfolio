@@ -24,7 +24,7 @@ export const projectData = [
     techStack: ["HTML5", "CSS3", "JavaScript", "MySQL", "PHP"],
     imageUrl: "/kimsha.png",
     githubLink: "https://github.com/Tsedenia-Nega/Kimsha-Food-Review-Website",
-    liveLink: "",
+    liveLink: "https://kimsha-buds.up.railway.app",
   },
   {
     _id: "3",
@@ -43,8 +43,8 @@ export const projectData = [
       "UniCare is a high-tech counseling platform built to meet students where they are. It goes far beyond a basic website by integrating Real-Time Live Chat for immediate crisis support and Virtual Meeting rooms for private therapy sessions. I implemented an AI-driven assistant to help students navigate resources and provide instant grounding exercises, alongside a robust Appointment Booking system. By combining resource sharing with interactive tools, UniCare ensures that mental health support is accessible, private, and available 24/7.",
     techStack: ["Tailwind CSS", "React", "Node.js", "Express", "MongoDB"],
     imageUrl: "/unicare.png",
-    githubLink: "",
-    liveLink: "",
+    githubLink: "https://github.com/Tsedenia-Nega/Unicare-Counseling.git",
+    liveLink: "https://unicare-counseling.onrender.com/",
   },
   {
     _id: "5",
