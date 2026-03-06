@@ -12,7 +12,7 @@ const StatsSection = () => {
     },
     {
       label: "Projects Completed",
-      value: "7",
+      value: "10",
       suffix: "+",
       isSpecial: false,
     },
