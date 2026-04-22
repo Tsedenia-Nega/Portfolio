@@ -24,7 +24,7 @@ export const projectData = [
     techStack: ["HTML5", "CSS3", "JavaScript", "MySQL", "PHP"],
     imageUrl: "/kimsha.png",
     githubLink: "https://github.com/Tsedenia-Nega/Kimsha-Food-Review-Website",
-    liveLink: "https://kimsha-buds.up.railway.app",
+    // liveLink: "https://kimsha-buds.up.railway.app",
   },
   {
     _id: "3",
